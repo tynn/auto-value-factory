@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+configurations {
+    include {
+        transitive false
+    }
+}
+
+dependencies {
+    include "com.google.auto.factory:auto-factory:$autoFactoryVersion"
+    include "com.google.auto.factory:auto-factory:$autoFactoryVersion:sources"
+}
+
+jar {
+    from configurations.include.collect { zipTree(it) }
+    classifier null
+    exclude 'META-INF/'
+    exclude '**/factory/*'
+    exclude '**/processor/'
+}

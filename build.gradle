@@ -1,0 +1,15 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+subprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    autoFactoryVersion = '1.0-beta4'
+}
